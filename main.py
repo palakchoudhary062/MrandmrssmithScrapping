@@ -5,7 +5,7 @@ from lxml import html
 
 scraper = cloudscraper.create_scraper()
 
-with open('hotels_data.csv', 'w', newline='', encoding='utf-8') as csvfile:
+with open('hotels_data1.csv', 'w', newline='', encoding='utf-8') as csvfile:
     csvwriter = csv.writer(csvfile)
 
     csvwriter.writerow(['Hotel Name', 'City', 'Country'])
@@ -18,6 +18,8 @@ with open('hotels_data.csv', 'w', newline='', encoding='utf-8') as csvfile:
         tree = html.fromstring(resp.content)
         
         hotel_infos = tree.xpath('//div[@class="hotelcard__content"]')
+        if len(hotel_infos) == 0:
+            break
         for hotel_info in hotel_infos:
             hotel_name_h2 = hotel_info.xpath('.//h2[@class="hotelcard__content-hotelname"]/a')[0].text
             city_elements = hotel_info.xpath('.//span[@class="location"]')
