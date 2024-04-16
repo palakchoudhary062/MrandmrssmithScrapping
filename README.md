@@ -4,11 +4,11 @@ This project is a Python script for scraping hotel data from the Mr & Mrs Smith 
 
 ## Installation
 
-  To run the script, you need to install 
--1. cloudscraper 
+  To run the script, you need to install -
+- cloudscraper 
 -   you can install it via pip install cloudscraper 
--2. bs4 
--3. lxml 
+- bs4 
+- lxml 
 
 
 ## Usage
