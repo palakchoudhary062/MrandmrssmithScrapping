@@ -11,7 +11,7 @@ with open('hotels_data.csv', 'w', newline='', encoding='utf-8') as csvfile:
     csvwriter.writerow(['Hotel Name', 'City', 'Country'])
 
     page = 1
-    while page < 203:
+    while True:
         print("current page = ", page)
         url = f'https://www.mrandmrssmith.com/luxury-hotels?page={page}'
         resp = scraper.get(url)
@@ -20,6 +20,7 @@ with open('hotels_data.csv', 'w', newline='', encoding='utf-8') as csvfile:
         
         hotel_infos = tree.xpath('//div[@class="hotelcard__content"]')
         if len(hotel_infos) == 0:
+            print("jkhbhub")
             break
         for hotel_info in hotel_infos:
             hotel_name_h2 = hotel_info.xpath('.//h2[@class="hotelcard__content-hotelname"]/a')[0].text
