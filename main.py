@@ -23,7 +23,7 @@ with open('hotels_data.csv', 'w', newline='', encoding='utf-8') as csvfile:
             city_elements = hotel_info.xpath('.//span[@class="location"]')
             city_name = city_elements[0].text if city_elements else "N/A"
             country_elements = hotel_info.xpath('.//span[@class="country"]')
-            country_name = country_elements[0].text.replace(',', '') if country_elements else "N/A"
+            country_name = country_elements[0].text.replace(',', '') if country_elements else city_name
 
             csvwriter.writerow([hotel_name_h2, city_name, country_name])
 
