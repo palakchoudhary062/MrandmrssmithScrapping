@@ -20,8 +20,10 @@ with open('hotels_data.csv', 'w', newline='', encoding='utf-8') as csvfile:
         hotel_infos = tree.xpath('//div[@class="hotelcard__content"]')
         for hotel_info in hotel_infos:
             hotel_name_h2 = hotel_info.xpath('.//h2[@class="hotelcard__content-hotelname"]/a')[0].text
-            city_name = hotel_info.xpath('.//span[@class="location"]')[0].text
-            country_name = hotel_info.xpath('.//span[@class="country"]')[0].text
+            city_elements = hotel_info.xpath('.//span[@class="location"]')
+            city_name = city_elements[0].text if city_elements else "N/A"
+            country_elements = hotel_info.xpath('.//span[@class="country"]')
+            country_name = country_elements[0].text.replace(',', '') if country_elements else "N/A"
 
             csvwriter.writerow([hotel_name_h2, city_name, country_name])
 
