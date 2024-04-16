@@ -5,13 +5,14 @@ from lxml import html
 
 scraper = cloudscraper.create_scraper()
 
-with open('hotels_data1.csv', 'w', newline='', encoding='utf-8') as csvfile:
+with open('hotels_data.csv', 'w', newline='', encoding='utf-8') as csvfile:
     csvwriter = csv.writer(csvfile)
 
     csvwriter.writerow(['Hotel Name', 'City', 'Country'])
 
     page = 1
     while page < 203:
+        print("current page = ", page)
         url = f'https://www.mrandmrssmith.com/luxury-hotels?page={page}'
         resp = scraper.get(url)
         soup = BeautifulSoup(resp.text, 'html.parser')
